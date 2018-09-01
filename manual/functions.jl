@@ -23,3 +23,12 @@ function hypotenuse(a, b)
 end
 
 println(hypotenuse(3, 4))
+
+using Dates
+function Date(y::Int64, m::Int64=1, d::Int64=1)
+    err = Dates.validargs(Dates.Date, y, m, d)
+    err === nothing || throw(err)
+    return Dates.Date(Dates.UTD(Dates.totaldays(y, m, d)))
+end
+println(Date(2003, 12, 26))
+println(methods(Date))
